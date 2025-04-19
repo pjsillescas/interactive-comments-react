@@ -5,6 +5,27 @@
   text-align: center;
 }
 
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+
+body {
+	background: hsl(239, 57%, 85%) !important;
+}
+
+.comment {
+	border	: 1px solid hsl(239, 57%, 85%);
+	border-radius: 10px;
+	background: white;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+
+
+
+
+/*
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -40,3 +61,4 @@
 .read-the-docs {
   color: #888;
 }
+*/

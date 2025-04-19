@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Container } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
+import AddComment from './Components/AddComment';
+import Attribution from './Components/Attribution'
+import Comments from './Components/Comments';
+import useComments from './Hooks/useComments'
 
 function App() {
-  const [count, setCount] = useState(0)
+	const { comments, currentUser, loading, error } = useComments();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	if (loading) return <p>Loading...</p>;
+	if (error) return <p>Error: {error}</p>;
+
+	return (
+		<Container fluid="lg">
+			<h1>Interactive Comments</h1>
+			{!!currentUser && (<>
+				<Comments comments={comments} currentUser={currentUser}/>
+				<AddComment user={currentUser} />
+			</>)}
+			<Attribution />
+		</Container>
+	)
 }
 
-export default App
+export default App;
